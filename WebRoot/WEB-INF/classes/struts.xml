@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- struts常量 -->
+	<constant name="struts.action.extension" value="action,,"></constant>                    <!-- 后缀 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" /> 				 <!-- 调用Action中的方法中的动态调用 -->
+	<constant name="struts.devMode" value="true" />                                                 <!-- 开发模式 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant> 		     <!-- 配置文件重载-->
+ 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>      <!-- OGNL访问静态 -->
+	<constant name="struts.ui.theme" value="simple"></constant>   							 <!-- 主题常量设为简单的 -->
+	<constant name="struts.multipart.maxSize" value="209715200"></constant>             <!-- 文件上传的最大上限-->
+	
+	
+	<package name="default" namespace="/" extends="struts-default">
+
+		<global-results>
+			<result name="global_error" >/index.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="global_error" exception="java.io.FileNotFoundException"></exception-mapping>
+		</global-exception-mappings>
+ 
+      <action name="loginAction" class="com.cyn.action.LoginAction" >
+	        <result name="succ">/jsp/main.jsp</result>
+	        <result name="fail">/login.jsp</result>
+        </action>
+        
+       <action name="exitAction" class="com.cyn.action.ExitAction" >
+	        <result name="exit">/login.jsp</result>
+        </action>
+
+		<action name="roleAction" class="com.cyn.action.RoleAction">
+			<result name="list">/jsp/role_list.jsp</result>
+			<result name="add">/jsp/role_add.jsp</result>
+			<result name="edit">/jsp/role_edit.jsp</result>
+		</action>
+			<action name="userAction" class="com.cyn.action.UserAction">
+			<result name="list">/jsp/user_list.jsp</result>
+			<result name="add">/jsp/user_add.jsp</result>
+			<result name="edit">/jsp/user_edit.jsp</result>
+		</action>
+		<action name="mainAction" class="com.cyn.action.MainAction">
+			<result name="main">/jsp/main.jsp</result>
+		</action>
+		<action name="menuAction" class="com.cyn.action.MenuAction">
+			<result name="list">/jsp/menu_list.jsp</result>
+			<result name="add">/jsp/menu_add.jsp</result>
+			<result name="edit">/jsp/menu_edit.jsp</result>
+		</action>
+		<action name="dataAction" class="com.cyn.action.DataAction">
+			<result name="list">/jsp/data_list.jsp</result>
+		</action>
+		<action name="messageAction" class="com.cyn.action.MessageAction">
+		</action>
+		<action name="noticeAction" class="com.cyn.action.NoticeAction">
+			<result name="add">/jsp/notice_add.jsp</result>
+			<result name="edit">/jsp/notice_edit.jsp</result>
+		</action>
+		
+	</package>
+	
+	
+</struts>
